@@ -72,7 +72,7 @@ Clean UI state management without multiple windows:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/job-tracker.git
+git clone https://github.com/Christian-Kammerath/job-tracker.git
 cd job-tracker
 ```
 
