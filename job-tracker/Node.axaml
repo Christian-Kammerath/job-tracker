@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:JobTracker"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="JobTracker.Node"
+             x:DataType="vm:ListItemViewModel"
+             >
+          
+    <Border BorderBrush="Gray" BorderThickness="2">
+        <DockPanel>
+            <Button DockPanel.Dock="Right" Command="{Binding ButtonCommand}" Foreground="White">
+                <Button.Styles>
+                    <Style Selector="Button">
+                        <Setter Property="Background" Value="Transparent"/>
+                    </Style>
+                    <Style Selector="Button:pointerover /template/ ContentPresenter">
+                        <Setter Property="Background" Value="Red"/>
+                        <Setter Property="TextElement.Foreground" Value="White"/>
+                    </Style>
+                </Button.Styles>
+                X
+            </Button>
+            <StackPanel Orientation="Vertical">
+                <TextBlock FontSize="20" FontWeight="Bold" Foreground="White" Text="{Binding Title}" Margin="5"/>
+                <TextBlock FontSize="10" Foreground="White" Text="{Binding CreateTime}" Margin="5"/>
+                <CheckBox Foreground="White" IsChecked="{Binding IsOpen}" Margin="5">Ist Offen?</CheckBox>
+                <Button Foreground="White" Click="NoteVisible_OnClick">▼</Button>
+                <TextBox  TextWrapping="Wrap" Height="100" AcceptsReturn="True" IsVisible="False" Text="{Binding Node}"  x:Name="NoteBox" ></TextBox>
+            </StackPanel>
+        </DockPanel>
+        
+    </Border>
+    
+</UserControl>

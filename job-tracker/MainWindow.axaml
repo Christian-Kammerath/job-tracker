@@ -1,0 +1,81 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JobTracker"
+        xmlns:jobTracker="clr-namespace:JobTracker"
+        x:DataType="local:MainWindow"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="JobTracker.MainWindow"
+        Background="DarkBlue"
+        >
+    <Panel>
+        <Panel x:Name="MainView">
+    <Grid RowDefinitions="0.5*,0.5*,7.5*,0.5*, 0.5*,0.5*">
+        
+        <Grid Grid.Row="2" ColumnDefinitions="20*,80*">
+            <Border Background="MidnightBlue" Grid.Column="0" BorderThickness="2" BorderBrush="Gray">
+                <StackPanel>
+                <Border BorderBrush="Gray" BorderThickness="2" Margin="20" Height="50" VerticalAlignment="Top">
+                    <TextBlock Text="{Binding Items.Count,StringFormat='Anzahl: {0}'}"
+                               Foreground="White"
+                               FontSize="15"
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"
+                               >
+                                
+                    </TextBlock>
+                </Border>
+                    <Border BorderBrush="Gray" BorderThickness="2" Margin="20" Height="50" VerticalAlignment="Top">
+                        <TextBlock  Text="{Binding Items.IsOpenCount,StringFormat='Offen: {0}'}"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center"
+                        >
+                                
+                        </TextBlock>
+                    </Border>
+                    <Border BorderBrush="Gray" BorderThickness="2" Margin="20" Height="50" VerticalAlignment="Top">
+                        <TextBlock  Text="{Binding Items.IsCloseCount,StringFormat='Geschlossen: {0}'}"
+                                   Foreground="White"
+                                   FontSize="15"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center"
+                        >
+                                
+                        </TextBlock>
+                    </Border>
+                    <StackPanel Margin="20" Orientation="Horizontal">
+                        <Button Margin="10" Foreground="White"  Click="OpenSettings_OnClick">⚙️ settings</Button>
+                        <Button Margin="10" Foreground="White"  Click="OpenCsv_OnClick" >Öffne Csv</Button>
+                    </StackPanel>
+                    
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="1"  BorderBrush="Gray" BorderThickness="2" CornerRadius="5" Width="1010">
+                <ListBox Background="Transparent"  Name="MainListBox"   ItemsSource="{Binding Items}" Width="1000">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <local:Node />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="4" ColumnDefinitions="20*,80*">
+            <StackPanel Grid.Column="1"   VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" >
+                <TextBox Background="White" Width="500" x:Name="InputBox"></TextBox>
+                <Button Content="Speichern" Background="Blue" Click="Button_Save_List_Item" />
+            </StackPanel>
+        </Grid>
+        
+    </Grid>
+        </Panel>
+        <Panel x:Name="SettingsPanel" IsVisible="False">
+            <!-- Dein Settings-Inhalt oder: -->
+            <jobTracker:Settings />
+            <Button Foreground="White" Content="Zurück" Click="CloseSettings_OnClick"/>
+        </Panel>
+    </Panel>
+</UserControl>
