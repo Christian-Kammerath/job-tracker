@@ -5,3 +5,4 @@ riderModule.iml
 /_ReSharper.Caches/
 csv_path.txt
 *.csv
+.idea
